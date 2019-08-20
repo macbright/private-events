@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       @user = current_user
+      @event = @user.events.build
     end
   end
 
