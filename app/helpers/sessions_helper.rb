@@ -18,7 +18,6 @@ module SessionsHelper
     end
 
     def log_out
-        forget(current_user)
         session[:user_id] = nil
         @current_user = nil
     end

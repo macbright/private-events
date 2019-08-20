@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     if logged_in?
       @user = current_user
       @event = @user.events.build
+      @events = @user.events.all
     end
   end
 
