@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       @user = current_user
       @event = @user.events.build
       @events = @user.events.all
+      @list_events = @user.attended_events.all
     end
   end
 

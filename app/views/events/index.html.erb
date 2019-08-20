@@ -1,7 +1,11 @@
 <h1>All Events</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= render @events %>  
+
+
+  <div class="row">
+    <% @events.each_slice(3) do |x|%>
+      <div class="col-md-4 col-sm-3">
+          <%= render x %>  
+      </div>
+    <% end %>
   </div>
-</div>
