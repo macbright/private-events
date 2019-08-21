@@ -17,10 +17,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.order(created_at: :desc)
+    @events = Event.all
+    @previous_event = @events.previous_e
+    @upcoming_event = @events.upcoming_e
   end
 
   def show
+    @event = Event.find_by(id: params[:id])
   end
 
   def edit
@@ -34,5 +37,7 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :description, :event_date, :location, :creator_id)
   end
+
+  
 
 end

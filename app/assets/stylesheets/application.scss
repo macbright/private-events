@@ -13,3 +13,16 @@
  */
 
 @import "bootstrap";
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.nav-user-name {
+  font-family: fantasy;
+  font-style: italic;
+  line-height: 2;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}

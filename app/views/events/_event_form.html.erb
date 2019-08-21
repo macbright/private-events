@@ -1,13 +1,18 @@
+<h4>Create Event Here</h4>
+
 <%= form_for(@event) do |f| %>
+      <div class="form-group">
+      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+      </div>
       
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %>
+      <div class="form-group">
+      <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
+      </div>
 
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "form-control" %>
-
-      <%= f.label :location %>
-      <%= f.text_field :location, class: "form-control" %>
+     
+      <div class="form-group">
+      <%= f.text_field :location, class: "form-control", placeholder: "Location"%>
+      </div>
 
       <%= f.label :event_date %>
       <%= f.date_field :event_date, class: "form-control" %>
