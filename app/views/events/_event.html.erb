@@ -1,8 +1,20 @@
 <div>
-  <h5 class="post-title"><%= link_to event.title, events_show_path %></h5>
+  <h5 class="post-title"><%= link_to event.title, event %></h5>
+  <div class="post-text"> 
+    <strong> Organizer: </strong> 
+    <%= event.creator.name.capitalize %> 
+  </div>
 
   <div class="post-text"><%= event.description %></div>
    <div class="post-text">Location: <%= event.location %></div>
   <div class="post-text">Event Date: <%= event.event_date %></div>
+
+  <% if params[:action] == 'show' %>
+    <strong> Attendees: </strong>
+    <% event.attendees.each do |x| %>
+      <span><%= x.name.capitalize %>, </span> 
+    <% end %>
+  <% end %>
+  
 </div>
 <hr>
