@@ -1,9 +1,8 @@
 <div>
-  <h2 class="post-title"><%= event.title %></h2>
+  <h5 class="post-title"><%= link_to event.title, events_show_path %></h5>
 
   <div class="post-text"><%= event.description %></div>
    <div class="post-text">Location: <%= event.location %></div>
   <div class="post-text">Event Date: <%= event.event_date %></div>
-  
 </div>
 <hr>

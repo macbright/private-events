@@ -1,11 +1,15 @@
 <h1>All Events</h1>
 
-
-
   <div class="row">
-    <% @events.each_slice(3) do |x|%>
-      <div class="col-md-4 col-sm-3">
-          <%= render x %>  
-      </div>
-    <% end %>
+    
+    <div class="col-md-6 col-sm-3">
+        <h2> Upcoming Events </h2>
+       <%= render @upcoming_event %>
+     
+    </div>
+    <div class="col-md-6 col-sm-3">
+        <h2> Past Events </h2>
+        <%= render @previous_event %>
+    </div>
+ 
   </div>
