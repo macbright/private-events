@@ -2,9 +2,9 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
     <a class="navbar-brand" href="#">Private Events</a>
     <% if logged_in? %>
-      <div class='nav-user-name'> <%= current_user.name %> </div>
+      <div class='nav-user-name'> Hey, <%= current_user.name.capitalize %> </div>
     <% else %>
-      <div class='nav-item nav-user-name'> Guest </div>
+      <div class='nav-item nav-user-name'>Please login,  Guest! </div>
     <% end %>
 
     
