@@ -1,19 +1,19 @@
 class EventsController < ApplicationController
   def new
     @event = Event.new
+    @user = current_user
   end
 
   def create
     @event = Event.new(event_params)
     
     if @event.save
-      flash[:notice] = "Event Saved!"
-      redirect_to root_url
+      flash[:success] = "Event Saved!"
+      redirect_to events_path
     else
-      flash.now[:error] = "Evnet Can't save!"
-      render :new
+      flash[:warning] = "All field must be filled!"
+      redirect_to root_url
     end
-
   end
 
   def index

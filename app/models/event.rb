@@ -7,8 +7,11 @@ class Event < ApplicationRecord
   scope :previous_e, -> { where('event_date < :current_date', current_date: DateTime.now) }
   scope :upcoming_e, -> { where('event_date >= :current_date', current_date: DateTime.now) }
 
-  validates :title, :description, :location, :event_date, presence: true
-  validates :title, length: { maximum: 100 }
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :location,  presence: true
+  validates :event_date, presence: true
+  validates :creator_id, presence: true
   
 
 

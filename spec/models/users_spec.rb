@@ -35,7 +35,7 @@ RSpec.describe User, :type => :model do
     @valid_user.events.build( title: "Example Event",
                               description: "example",
                               location: "online",
-                              event_date: Date.today,
+                              event_date: Date.today
                             )
     expect(@valid_user.events.last.title).to include("Example Event")
   end 
