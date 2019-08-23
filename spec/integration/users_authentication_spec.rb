@@ -1,28 +1,32 @@
 require "rails_helper"
 
-describe "the signin process", type: :feature do
+RSpec.describe "User Authentication", type: :feature do
   before :each do
-    User.create(name: "bright", email: 'user@example.com')
+    User.create(name: "Example User", email: 'user@example.com')
   end
 
-  it "signs me in" do
+  it "sucessful login" do
     visit '/login'
-      fill_in 'Email', with: 'user@example.com'
-    click_button 'commit'
+    fill_in('Email', with: 'user@example.com')
+    click_on('Log in')
     expect(page).to have_content 'You are logged in!'
   end
 
-  it "displays events" do
-    visit '/events'
-    expect(page).to have_content 'All Events'
+  it "unsucessful login" do
+    visit '/login'
+    fill_in('Email', with: 'wrong@example.com')
+    click_on('Log in')
+    expect(page).to have_content 'This user is not register!!'
   end
 
-  it "displays events" do
+
+  it "sucessful logout" do
     visit '/login'
-      fill_in 'Email', with: 'user@example.com'
-    click_button 'commit'
-    
-    click_link 'Sign Out'
+    fill_in('Email', with: 'user@example.com')
+    click_on('Log in')
+
+    click_on('Sign Out')
     expect(page).to have_content 'You have just signed out!'
   end
+
 end
