@@ -18,11 +18,6 @@ class UsersController < ApplicationController
       @user = current_user
       @event = @user.events.build
       @events = @user.events.all
-      
-      @list_events = @user.attended_events.all
-
-      @upcoming_events = @user.upcoming
-      @previous_events = @user.previous
     end
   end
 

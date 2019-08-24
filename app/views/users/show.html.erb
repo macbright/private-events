@@ -7,17 +7,21 @@
   </div>
     
   <div class="col-md-6">
+    <div id="user-upcoming-events">
       <h2> Upcoming Events </h2>
-      <%= render @upcoming_events %><br>
+      <%= render @user.upcoming %>
+    </div>
 
+    <div id="user-past-events">
       <h2> Past Events </h2>
-      <%= render @previous_events %>
-     
+      <%= render @user.previous %>
+    </div>
+
   </div>
 
    <div class="col-md-3">
     <h5> Attending Events</h5>
-      <%= render @list_events %>
+      <%= render @user.attended_events %>
   </div>
 </div>
 

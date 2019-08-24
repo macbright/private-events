@@ -7,7 +7,7 @@ RSpec.describe User, :type => :model do
                             email: "valid_user@abc.com" )
 
     @invalid_user = User.new( name: "invalid user",
-                            email: "invalid_user@abc.com" )
+                              email: "invalid_user@abc.com" )
   end                    
 
 

@@ -2,14 +2,14 @@
 
   <div class="row">
     
-    <div class="col-md-6 col-sm-3">
+    <div class="col-md-6 col-sm-3" id="upcoming-events">
         <h2> Upcoming Events </h2>
-       <%= render @upcoming_event %>
+       <%= render @events.upcoming_events %>
      
     </div>
-    <div class="col-md-6 col-sm-3">
+    <div class="col-md-6 col-sm-3" id="past-events">
         <h2> Past Events </h2>
-        <%= render @previous_event %>
+        <%= render @events.previous_events %>
     </div>
  
   </div>

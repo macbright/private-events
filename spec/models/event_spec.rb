@@ -8,6 +8,7 @@ RSpec.describe Event, :type => :model do
                             event_date: Date.today,
                             creator_id: 1 )
     end
+    
     context 'Validation Test' do
         it 'ensure that title is present' do 
             @event.title = ""
