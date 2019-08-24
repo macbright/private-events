@@ -8,6 +8,28 @@ This is one of the projects on Ruby and Rails Tutorial. in this project we are t
 - This project have 2 major model - User & Event, one bridge model - Attendance.
 - User can create events (one to many), can attend many Events if possible, Event can have many attendees (one to many).
 
+## To Run locally
+
+- Clone repository to your local machine, and enter project root folder.
+
+```shell
+git clone repo_url
+cd repo_dir
+```
+
+- Install necessary dependencies, create db(for development), generate seed data.
+
+```shell
+bundle install
+rails db:create db:migrate db:seed
+```
+
+- Start the server, visit `http://localhost:3000` from your browser.
+
+```
+rails server
+```
+
 ## Reference
 
 [Odin Project Requirement](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
