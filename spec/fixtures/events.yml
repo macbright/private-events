@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+event1:
+  title: upcoming event test
+  description: upcoming event
+  event_date: 15.days.from_now
+  location: Office
+
+event2:
+  title: past event test
+  description: past event
+  event_date: 15.days.ago
+  location: online
