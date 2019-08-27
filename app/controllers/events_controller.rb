@@ -18,10 +18,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @user = current_user
+    @attendance = Attendance.new
   end
 
   def show
     @event = Event.find_by(id: params[:id])
+    @user = current_user
+    @attendance = Attendance.new
   end
 
   def edit

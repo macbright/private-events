@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       @user = current_user
       @event = @user.events.build
       @events = @user.events.all
+      @attendance = Attendance.new
     end
   end
 

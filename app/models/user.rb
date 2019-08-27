@@ -19,5 +19,7 @@ class User < ApplicationRecord
     events.where('event_date >= :current_date',
                           current_date: DateTime.now)
   end
+
+  
   
 end
