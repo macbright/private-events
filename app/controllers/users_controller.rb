@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       @user = current_user
+      @total_events =@user.attended_events.count
       @event = @user.events.build
       @events = @user.events.all
       @attendance = Attendance.new

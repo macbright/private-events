@@ -14,7 +14,7 @@
 
       <% if logged_in? %>
         <li class="nav-item"><%= link_to "Sign Out", logout_path, method: :delete, class: 'nav-link logout', id: "logout" %></li>
-
+        
       <% else %>
         <li class="nav-item "><%= link_to "Sign In", login_path, class: 'nav-link' %></li>
       <% end %>
