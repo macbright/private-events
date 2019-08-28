@@ -18,6 +18,7 @@
           <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       <div class="p-4">
+      <div class="nav-item attending_events"> Attending Events: <%= @total_events %></div>
       <%= yield %>
 
       </div>
