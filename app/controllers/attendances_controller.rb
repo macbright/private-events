@@ -10,8 +10,8 @@ class AttendancesController < ApplicationController
       flash[:success] = "You attended this event!"
       redirect_to root_path
     else
-      flash[:warning] = "the event has already passed"
-      redirect_to event_path
+      flash.now[:warning] = "the event has already passed"
+      render :event_path
     end
   end
 

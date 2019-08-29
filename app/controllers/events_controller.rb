@@ -6,30 +6,29 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
     if @event.save
       flash[:success] = "Event Saved!"
       redirect_to events_path
     else
       flash[:warning] = "All field must be filled!"
-      redirect_to root_url
+      render :root_url
     end
   end
 
   def index
     @events = Event.all
+    @past_events = Event.previous_events
+    @upcoming_events = Event.upcoming_events
     @user = current_user
     @attendance = Attendance.new
   end
 
   def show
     @event = Event.find_by(id: params[:id])
-    @event1 = Event.find_by(id: params[:id])
     @a_array = @event.attendees.ids
     @user = current_user
-    
     @attendance = Attendance.new
-    
   end
 
   def edit
