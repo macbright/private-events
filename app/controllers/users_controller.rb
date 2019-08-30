@@ -6,7 +6,8 @@ class UsersController < ApplicationController
    def create
      @user = User.new(user_params)
      if @user.save
-      flash[:notice] = 'User created'
+      log_in @user
+      flash[:success] = 'Welcome to private-event'
       redirect_to root_url
      else 
       render 'new'
@@ -15,10 +16,9 @@ class UsersController < ApplicationController
 
   def show
     if logged_in?
-      @user = current_user
-      @total_events =@user.attended_events.count
-      @event = @user.events.build
-      @events = @user.events.all
+      @total_events = current_user.attended_events.count
+      @event = current_user.events.build
+      @events = current_user.events.all
       @attendance = Attendance.new
     end
   end

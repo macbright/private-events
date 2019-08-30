@@ -18,7 +18,7 @@
       <%= f.label :event_date %>
       <%= f.date_field :event_date, class: "form-control" %>
 
-      <%= f.hidden_field :creator_id, value: @user.id %>
+      <%= f.hidden_field :creator_id, value: current_user.id %>
       <br>
       <%= f.submit "Publish", class: "btn btn-primary" %>
 <% end %>
