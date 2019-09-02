@@ -1,5 +1,4 @@
-
-<% if logged_in? %>
+<div class="nav-item attending_events"> Attending Events: <%= @total_events %></div>
 
   <div class="row">
     <div class="col-md-3 ">
@@ -9,26 +8,19 @@
   <div class="col-md-5">
     <div id="user-upcoming-events">
       <h2> Upcoming Events </h2>
-      <%= render current_user.upcoming %>
-    </div>
-
-    <div id="user-past-events">
-      <h2> Past Events </h2>
-      <%= render current_user.previous %>
+      <%= render current_user.attended_events.upcoming_events %>
     </div>
 
   </div>
 
    <div class="col-md-4">
-    <h5> Attending Events</h5>
-      <%= render current_user.attended_events %>
+    <div id="user-past-events">
+      <h2> Past Events </h2>
+      <%= render current_user.attended_events.previous_events %>
+    </div>
   </div>
 </div>
 
-<% else %>
-  <h2> Please sign in. <h2>
-  <%= link_to "Sign in", login_path %>
-<% end %>
 
 
 

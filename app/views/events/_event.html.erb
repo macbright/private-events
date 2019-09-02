@@ -8,34 +8,9 @@
   </div>
 
   <div class="post-text"><%= event.description %></div>
-   <div class="post-text">Location: <%= event.location %></div>
+  
   <div class="post-text">Event Date: <%= event.event_date %></div>
 
-  <% if params[:action] == 'show' %>
-    <strong> Attendees: </strong>
-    <% event.attendees.each do |x| %>
-      <span><%= x.name.capitalize %>, </span> 
-    <% end %>
-  <% end %>
-
-  <% if logged_in? %>
-    <% if @a_array != nil  %>
-        <% if future_event? && !@a_array.include?(@user.id) %>
-          <%= form_for(@attendance) do |f| %>
-            <div class="form-group">
-                <%= f.hidden_field :attendee_id, value: @user.id %>
-                <%= f.hidden_field :attended_event_id, value: event.id %>
-
-                <%= f.submit "Attend", class: "btn btn-primary" %>
-            </div>
-          <%end %><br>
-        <% elsif !future_event?  %><br>
-          <p class=" btn btn-warning">Past Event</p>
-        <% else %><br>
-            <p class=" btn btn-success">You're attending this event!</p>
-        <% end %>
-      <% end %>
-  <% end %>
   
 </div>
 <hr>

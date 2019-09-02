@@ -9,17 +9,5 @@ class User < ApplicationRecord
   
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
-
-  def previous
-    events.where('event_date < :current_date',
-                          current_date: DateTime.now)
-  end
-  
-  def upcoming
-    events.where('event_date >= :current_date',
-                          current_date: DateTime.now)
-  end
-
-  
   
 end

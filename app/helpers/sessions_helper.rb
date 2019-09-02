@@ -24,9 +24,4 @@ module SessionsHelper
         @current_user = nil
     end
 
-    def event_attend?(user, event_id)
-        user.attended_events.ids.include?(event_id)
-    end
-
-    
 end

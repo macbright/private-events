@@ -13,4 +13,12 @@ class Event < ApplicationRecord
   validates :event_date, presence: true
   validates :creator_id, presence: true
 
+  def attended?(user_id)
+    self.attendees.ids.include?(user_id)
+  end
+
+  def pasted?
+    self.event_date < Date.today
+  end
+
 end

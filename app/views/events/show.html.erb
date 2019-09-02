@@ -1,5 +1,62 @@
 <div class="row">
-    <div class="col-md-6 mx-auto pt-5">
-        <%= render @event %>    
+    <div class="col-md-8 mx-auto pt-2">
+
+        <h2 class="post-title text-center"><%= @event.title %></h2>
+        <img src="https://images.unsplash.com/photo-1549451371-64aa98a6f660?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="img-fluid my-3 rounded" alt="Event image">
+
+        <div class="row">
+            <h5 class="col-md-4"> Who Organized? </h5>
+            <span class="col-md-6 text-capitalize font-italic"> 
+                <%= @event.creator.name.capitalize %> 
+            </span>
+        </div>
+
+        <div class="post-text my-3">
+            <h5>What it is about? </h5>
+            <%= @event.description %>
+        </div>
+
+        <div class="post-text my-3 row">
+            <h5 class="col-md-4"> Who will attend? </h5>
+
+            <ul class="col-md-6">
+            <% @event.attendees.each do |attendee| %>
+            <li><%= attendee.name.capitalize %></li> 
+            <% end %>
+            </ul>
+        </div>
+
+        <hr>
+
+        <span class="post-text mr-3 ">
+         Location: <%= @event.location %>
+        </span>
+
+        <span class="post-text ">
+         Date: <%= @event.event_date %>
+        </span>
+
+        <hr>
+        <div>
+            <% if @event.pasted? %>  
+                <p class="btn btn-secondary btn-block">Event is finished!</p>
+            <% elsif @event.attended?(current_user.id) %>
+                <p class="btn btn-warning btn-block">You joined this event!</p>
+                
+            <% else %>
+                <%= form_for(@attendance) do |f| %>
+                <div class="form-group">
+                    <%= f.hidden_field :attendee_id, value: current_user.id %>
+                    <%= f.hidden_field :attended_event_id, value: @event.id %>
+
+                    <%= f.submit "Join", class: "btn btn-primary btn-block" %>
+                </div>
+                <% end %>
+            <% end %> 
+
+
+        </div>
+
+        
     </div>
 </div>

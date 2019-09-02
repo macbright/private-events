@@ -1,40 +1,41 @@
 class EventsController < ApplicationController
+  before_action :logged_in_user, only: [:show, :create, :edit, :destroy]
+
   def new
     @event = Event.new
-    @user = current_user
-    @future_event = future_event?
+    
   end
 
   def create
     @event = current_user.events.build(event_params)
-    if @event.save
-      flash[:success] = "Event Saved!"
-      redirect_to events_path
+
+    if @event.event_date >= Date.today 
+      if @event.save
+        flash[:success] = "Event Saved!"
+        @attendance = Attendance.new(attendee_id: params[:event][:creator_id].to_i, attended_event_id: @event.id)
+        @attendance.save # make the creator as the first attendee
+
+        redirect_to user_path(current_user)
+      else
+        flash[:warning] = "All field must be filled!"
+        redirect_to user_path(current_user)
+      end
     else
-      flash[:warning] = "All field must be filled!"
-      render :root_url
+      flash[:warning] = "New Event's Date can't earlier than today!"
+      redirect_to user_path(current_user)
     end
+
   end
 
   def index
     @events = Event.all
     @past_events = Event.previous_events
-    @upcoming_events = Event.upcoming_events
-    @user = current_user
-    @attendance = Attendance.new
+    @upcoming_events = Event.upcoming_events 
   end
 
   def show
     @event = Event.find_by(id: params[:id])
-    @a_array = @event.attendees.ids
-    @user = current_user
-    @attendance = Attendance.new
-  end
-
-  def edit
-  end
-
-  def destroy
+    @attendance = @event.attendances.build
   end
 
   private
@@ -43,6 +44,5 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :description, :event_date, :location, :creator_id)
   end
 
-  
 
 end
