@@ -24,6 +24,14 @@ bundle install
 rails db:create db:migrate db:seed
 ```
 
+or
+
+```shell
+rails db:reset db:migrate db:seed
+```
+
+to reset your db if you already create the db locally.
+
 - Start the server, visit `http://localhost:3000` from your browser.
 
 ```
