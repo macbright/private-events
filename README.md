@@ -2,6 +2,8 @@
 
 This is one of the projects on Ruby and Rails Tutorial. in this project we are to create a site similar to "Eventbrite" which allows users to create events and then manage user signups. Users can create events and send invitations and parties. Events take place at a specific date and at a location.
 
+[Project Demo](https://private-event-253.herokuapp.com/)
+
 ## Note
 
 - This is a study project for learning Ruby on Rails - Active Records concept.
@@ -41,8 +43,6 @@ rails server
 ## Reference
 
 [Odin Project Requirement](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
-
-[Project Demo - To come later](http://#)
 
 [Conectp of Scopes in Rails](https://guides.rubyonrails.org/active_record_querying.html#scopes)
 
