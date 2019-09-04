@@ -1,0 +1,16 @@
+<div>
+  <h5 class="post-title"><%= link_to event.title, event %></h5>
+  <div class="post-text"> 
+    <strong> Organizer: </strong>
+    <% if event.creator.name != nil %> 
+      <%= event.creator.name.capitalize  %>
+    <%end%>
+  </div>
+
+  <div class="post-text"><%= event.description %></div>
+  
+  <div class="post-text">Event Date: <%= event.event_date %></div>
+
+  
+</div>
+<hr>

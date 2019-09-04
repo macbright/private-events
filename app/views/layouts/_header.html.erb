@@ -1,0 +1,25 @@
+<header >
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
+    <a class="navbar-brand" href="#">Private Events</a>
+    <% if logged_in? %>
+      <div class='nav-user-name'> Hey, <%= current_user.name.capitalize %> </div>
+    <% else %>
+      <div class='nav-item nav-user-name'>Please login,  Guest! </div>
+    <% end %>
+
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item active "><%= link_to "Home", root_path, class: 'nav-link' %></li>
+
+      <% if logged_in? %>
+        <li class="nav-item "><%= link_to "Profile", user_path(current_user), class: 'nav-link' %></li>
+        <li class="nav-item "><%= link_to "Users", users_path, class: 'nav-link' %></li>
+
+        <li class="nav-item"><%= link_to "Sign Out", logout_path, method: :delete, class: 'nav-link logout', id: "logout" %></li>
+        
+      <% else %>
+        <li class="nav-item "><%= link_to "Sign In", login_path, class: 'nav-link' %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

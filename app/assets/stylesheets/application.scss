@@ -10,6 +10,28 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "bootstrap";
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.nav-user-name {
+    font-family: fantasy;
+    font-style: italic;
+    line-height: 2;
+    font-size: 25px;
+    color: white;
+    font-weight: 500;
+}
+
+.attending_events {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 25;
+    color: black;
+    text-align: right;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
