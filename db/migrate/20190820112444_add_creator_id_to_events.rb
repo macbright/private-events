@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCreatorIdToEvents < ActiveRecord::Migration[5.2]
   def change
     add_column :events, :create_id, :integer
