@@ -23,12 +23,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    return unless logged_in?
-      @total_events = current_user.attended_events.count
-      @event = current_user.events.build
-      @events = current_user.events.all
-      @attendance = Attendance.new
-    end
+    @total_events = current_user.attended_events.count
+    @event = current_user.events.build
+    @events = current_user.events.all
+    @attendance = Attendance.new
   end
 
   private
@@ -36,5 +34,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
-  
 end
