@@ -37,23 +37,37 @@
         </span>
 
         <hr>
-        <div>
-            <% if @event.pasted? %>  
-                <p class="btn btn-secondary btn-block">Event is finished!</p>
-            <% elsif @event.attended?(current_user.id) %>
-                <p class="btn btn-warning btn-block">You joined this event!</p>
-                
-            <% else %>
-                <%= form_for(@attendance) do |f| %>
-                <div class="form-group">
-                    <%= f.hidden_field :attendee_id, value: current_user.id %>
-                    <%= f.hidden_field :attended_event_id, value: @event.id %>
+        <div class="row">
+            <div class="col-md-6">
+                <% if @event.pasted? %>  
+                    <p class="btn btn-secondary btn-block">Event is finished!</p>
+                <% elsif @event.attended?(current_user.id) %>
+                    <p class="btn btn-warning btn-block">You joined this event!</p>
+                    
+                <% else %>
+                    <%= form_for(@attendance) do |f| %>
+                    <div class="form-group">
+                        <%= f.hidden_field :attendee_id, value: current_user.id %>
+                        <%= f.hidden_field :attended_event_id, value: @event.id %>
 
-                    <%= f.submit "Join", class: "btn btn-primary btn-block" %>
-                </div>
-                <% end %>
-            <% end %> 
+                        <%= f.submit "Join", class: "btn btn-primary btn-block" %>
+                    </div>
+                    <% end %>
+                <% end %> 
 
+            </div>
+
+            <div class="col-md-6">
+               <% if @event.creator_id == current_user.id %>
+                <div class="mr-4">
+                    <%= link_to "Update", edit_event_path(@event), class: "btn btn-info mr-3" %>
+                    <%= link_to "Delete", delete_event_path(@event), 
+                                        method: :delete,
+                                        data: { confirm: "You sure?" },
+                                        class: "btn btn-danger delete-post ml-2" %>
+                </div>  
+            <% end %>
+            </div>
 
         </div>
 

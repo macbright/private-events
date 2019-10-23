@@ -1,12 +1,11 @@
-<h4>Create Event Here</h4>
+<h4>Edit Event Here</h4>
 
 <%= form_for(@event) do |f| %>
+
       <% if @event.errors.any? %>
         <%  @event.errors.full_messages.each do |msg| %>
             <%# display error messages %>
-            <div class="alert alert-danger">
-                  <%= msg %>
-            </div>
+            <div class="alert alert-danger"><%= msg%>
         <% end %>
       <% end %>
 
@@ -29,7 +28,7 @@
  
       <div class="form-group">
        <%= f.hidden_field :creator_id, value: current_user.id %>
-       <%= f.submit "Publish", class: "btn btn-primary btn-block" %>
+       <%= f.submit "Update", class: "btn btn-primary btn-block" %>
       </div>
 
 <% end %>

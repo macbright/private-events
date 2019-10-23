@@ -1,1 +1,29 @@
-<%= render 'events/event_form'%>
+<div class="nav-item attending_events"> Attending Events: <%= @total_events %></div>
+  
+  <div class="row">
+    <div class="col-md-3 ">
+      <%= render 'events/event_form' %>
+      
+  </div>
+    
+  <div class="col-md-5">
+    <div id="user-upcoming-events">
+      <h2> Upcoming Events </h2>
+      <%= render current_user.attended_events.upcoming_events %>
+    </div>
+
+  </div>
+
+   <div class="col-md-4">
+    <div id="user-past-events">
+      <h2> Past Events </h2>
+      <%= render current_user.attended_events.previous_events %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

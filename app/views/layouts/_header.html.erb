@@ -1,5 +1,5 @@
-<header >
- <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
+<header class="sticky-top" >
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between sticky-top">
     <a class="navbar-brand" href="#">Private Events</a>
     <% if logged_in? %>
       <div class='nav-user-name'> Hey, <%= current_user.name.capitalize %> </div>

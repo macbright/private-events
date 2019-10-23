@@ -8,30 +8,53 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-
-    if @event.event_date >= Date.today 
+    if !@event.event_date.nil? && @event.event_date >= Date.today 
       if @event.save
         flash[:success] = "Event Saved!"
         @attendance = Attendance.new(attendee_id: params[:event][:creator_id].to_i, attended_event_id: @event.id)
-        @attendance.save # make the creator as the first attendee
-
+        @attendance.save # make the creator as the first attendees
         redirect_to user_path(current_user)
       else
-        flash[:warning] = "All field must be filled!"
-        redirect_to user_path(current_user)
+        # redirect_to user_path(current_user)
+        render "new"
       end
     else
-      flash[:warning] = "New Event's Date can't earlier than today!"
+      flash[:warning] = "New Event's Date can't earlier than today! or can't be blank"
       redirect_to user_path(current_user)
     end
 
   end
 
+  
   def index
     @events = Event.all
     @past_events = Event.previous_events
     @upcoming_events = Event.upcoming_events 
+  end 
+
+
+  def edit
+    @event = Event.find_by(id: params[:id])
+    @events = Event.all
   end
+
+  def update
+    @event = Event.find_by(id: params[:id])
+    @events = Event.all
+    if @event.update(event_params)
+      flash[:success] = 'Event updated'
+      redirect_to user_path(current_user)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @event = Event.find_by(id: params[:format])
+    flash[:danger] = 'Event Deleted!' if @event.destroy
+    redirect_to user_path(current_user)
+  end
+
 
   def show
     @event = Event.find_by(id: params[:id])

@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :attendances, foreign_key: :attendee_id
   has_many :attended_events, through: :attendances
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { minimum: 3, maximum: 30 }
+  validates :email, uniqueness: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
