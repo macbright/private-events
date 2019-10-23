@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
-  before_action :logged_in_user, only: [:show, :create, :edit, :destroy]
+  before_action :logged_in_user, only: %i[show create edit destroy]
 
   def new
     @event = Event.new
-    
   end
 
   def create
     @event = current_user.events.build(event_params)
     if !@event.event_date.nil? && @event.event_date >= Date.today 
       if @event.save
-        flash[:success] = "Event Saved!"
+        flash[:success] = 'Event Saved!'
+        # make the creator as the first attendee
         @attendance = Attendance.new(attendee_id: params[:event][:creator_id].to_i, attended_event_id: @event.id)
         @attendance.save # make the creator as the first attendees
         redirect_to user_path(current_user)
@@ -20,9 +22,7 @@ class EventsController < ApplicationController
       end
     else
       flash[:warning] = "New Event's Date can't earlier than today! or can't be blank"
-      redirect_to user_path(current_user)
     end
-
   end
 
   
@@ -36,6 +36,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find_by(id: params[:id])
     @events = Event.all
+    @upcoming_events = Event.upcoming_events
   end
 
   def update
@@ -66,6 +67,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :description, :event_date, :location, :creator_id)
   end
-
-
 end

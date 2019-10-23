@@ -1,15 +1,16 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe "Event Management", type: :feature do
+require 'rails_helper'
+
+RSpec.describe 'Event Management', type: :feature do
   fixtures :events
 
   before do
-    @user = User.create!( name: "Test User",
-                          email: "test_user@abc.com" )
-    
+    @user = User.create!(name: 'Test User',
+                         email: 'test_user@abc.com')
   end
 
-  it "upcoming event & past evetn show in Events index page" do
+  it 'upcoming event & past evetn show in Events index page' do
     visit '/events'
     expect(page).to have_content 'All Events'
     expect(page).to have_content 'Upcoming Events'
@@ -17,10 +18,17 @@ RSpec.describe "Event Management", type: :feature do
   end
 
   it 'create event successfully' do
+<<<<<<< HEAD
     #log in
     visit '/login'
     expect(page).to have_content("Log In")
     # click_on('Sign in')
+=======
+    # log in
+    visit root_url
+    expect(page).to have_content('Please sign in.')
+    click_on('Sign in')
+>>>>>>> 140563dba77377c2c76b95290e51ddffd72b45a0
     fill_in('Email', with: 'test_user@abc.com')
     click_on('Log in')
     expect(page).to have_content 'You are logged in!'
@@ -33,17 +41,23 @@ RSpec.describe "Event Management", type: :feature do
 
     click_on('Publish')
 
-    #check show page
-    expect(page).to have_content("Event Saved!")
-    expect(page).to have_content("New Event Create Success")
-
+    # check show page
+    expect(page).to have_content('Event Saved!')
+    expect(page).to have_content('New Event Create Success')
   end
 
   it 'create event unsuccessfully' do
+<<<<<<< HEAD
     #log in
     visit '/login'
     expect(page).to have_content("Log In")
     # click_on('Sign in')
+=======
+    # log in
+    visit root_url
+    expect(page).to have_content('Please sign in.')
+    click_on('Sign in')
+>>>>>>> 140563dba77377c2c76b95290e51ddffd72b45a0
     fill_in('Email', with: 'test_user@abc.com')
     click_on('Log in')
     expect(page).to have_content 'You are logged in!'
@@ -55,8 +69,6 @@ RSpec.describe "Event Management", type: :feature do
     fill_in('event[event_date]', with: 2.days.from_now)
 
     click_on('Publish')
-    expect(page).to have_content("All field must be filled!")
+    expect(page).to have_content('All field must be filled!')
   end
-
-
 end
